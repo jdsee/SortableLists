@@ -1,6 +1,5 @@
-package SortableLists;
-
 import SortableLists.data.Student;
+import SortableLists.lists.DoublyLinkedList;
 import SortableLists.lists.Listable;
 import SortableLists.lists.SinglyLinkedList;
 import org.junit.Assert;
@@ -9,10 +8,10 @@ import org.junit.Test;
 /**
  * @author joschaseelig
  */
-public class SinglyLinkedListTest {
+public class DoublyLinkedListTest {
 
     private Listable<String> createStringList() {
-        return new SinglyLinkedList<>();
+        return new DoublyLinkedList<>();
     }
 
     private Listable<Student> createStudentList() {
@@ -119,12 +118,18 @@ public class SinglyLinkedListTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void get_BadCase01() throws IndexOutOfBoundsException {
         Listable<String> list = this.createStringList();
+
+        String string = "String";
+
         list.get(1);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void get_BadCase02() throws IndexOutOfBoundsException {
         Listable<String> list = this.createStringList();
+
+        String string = "String";
+
         list.get(-1);
     }
 
@@ -175,16 +180,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void clear_GoodCase02() {
-        Listable<String> list = this.createStringList();
-
-        list.clear();
-
-        Assert.assertTrue(list.isEmpty());
-    }
-
-    @Test
-    public void swap_GoodCase01() {
+    public void exchange_GoodCase01() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -201,7 +197,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_GoodCase02() {
+    public void exchange_GoodCase02() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -218,7 +214,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BorderCase01() {
+    public void exchange_BorderCase01() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -235,7 +231,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BorderCase02() {
+    public void exchange_BorderCase02() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -252,7 +248,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void swap_BadCase01() {
+    public void exchange_BadCase01() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -266,7 +262,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BadCase02() {
+    public void exchange_BadCase02() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -282,7 +278,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BadCase03() {
+    public void exchange_BadCase03() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -296,6 +292,15 @@ public class SinglyLinkedListTest {
 
         Assert.assertNotEquals(list.get(1), "s1");
         Assert.assertNotEquals(list.get(4), "s4");
+    }
+
+    @Test
+    public void clear_GoodCase02() {
+        Listable<String> list = this.createStringList();
+
+        list.clear();
+
+        Assert.assertTrue(list.isEmpty());
     }
 
     @Test
