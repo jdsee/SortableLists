@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc01adbc-1c99-45ac-959f-d367c23f7150" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/SortableLists.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SortableLists.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SortableLists.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/SortableLists.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SortableLists.iws" beforeDir="false" afterPath="$PROJECT_DIR$/SortableLists.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SortableLists.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SortableLists.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/SortableLists/ConsoleApplicationTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/SortableLists/DoublyLinkedListTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/SortableLists/SinglyLinkedListTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/ConsoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/ConsoleApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/data/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/data/Student.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -133,8 +125,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/SortableLists/ConsoleApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="379" column="103" selection-start-line="379" selection-start-column="103" selection-end-line="379" selection-end-column="103" />
+            <state relative-caret-position="418">
+              <caret line="442" column="141" selection-start-line="442" selection-start-column="141" selection-end-line="442" selection-end-column="141" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -519,7 +511,7 @@
       <workItem from="1559894969726" duration="246000" />
       <workItem from="1559896164106" duration="57000" />
       <workItem from="1559896228225" duration="1584000" />
-      <workItem from="1559901394540" duration="1680000" />
+      <workItem from="1559901394540" duration="1995000" />
     </task>
     <servers />
   </component>
@@ -556,7 +548,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8691000" />
+    <option name="totallyTimeSpent" value="9006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -712,8 +704,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SortableLists/ConsoleApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="379" column="103" selection-start-line="379" selection-start-column="103" selection-end-line="379" selection-end-column="103" />
+        <state relative-caret-position="418">
+          <caret line="442" column="141" selection-start-line="442" selection-start-column="141" selection-end-line="442" selection-end-column="141" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
