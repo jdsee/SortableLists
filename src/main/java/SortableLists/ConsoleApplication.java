@@ -3,13 +3,13 @@ package SortableLists;
 import SortableLists.data.Student;
 import SortableLists.lists.DoublyLinkedList;
 import SortableLists.lists.Listable;
-import SortableLists.lists.SinglyLinkedList;
 import SortableLists.sort.Comparator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.NoSuchElementException;
 
 /**
  * @author joschaseelig
@@ -73,7 +73,7 @@ public class ConsoleApplication {
                 SIZE_STRING + "       -> Prints the actual amount of items in the list.\n" +
                 IS_EMPTY_STRING + "      -> Prints 'yes' if the stack is empty - 'no' otherwise.\n" +
                 HEAPSORT_STRING + "       -> Sorts the list and prints all items in the new order.\n" +
-                SEARCH_STRING + "         -> Searches for students matching the search term and prints the findings.\n" +
+                SEARCH_STRING + "     -> Searches for students matching the search term and prints the findings.\n" +
                 PRINT_ALL_STRING + "      -> Prints all items of the list.\n" +
                 "\n" +
                 PRINT_TASKS_STRING + "      -> Prints possible tasks.\n" +
@@ -110,12 +110,14 @@ public class ConsoleApplication {
                     doAdd(params);
                     break;
                 case GET_STRING:
+                    checkForElements();
                     doGet(params);
                     break;
                 case INSERT_AT_STRING:
                     doInsertAt(params);
                     break;
                 case REMOVE_STRING:
+                    checkForElements();
                     doRemove(params);
                     break;
                 case CLEAR_STRING:
@@ -131,9 +133,11 @@ public class ConsoleApplication {
                     doPrintAll();
                     break;
                 case HEAPSORT_STRING:
+                    checkForElements();
                     doHeapSort(params);
                     break;
                 case SEARCH_STRING:
+                    checkForElements();
                     doSearch(params);
                     break;
                 case "-h":
@@ -153,10 +157,17 @@ public class ConsoleApplication {
         } catch (NullPointerException | IndexOutOfBoundsException iob) {
             System.out.println("\nThe specified arguments are invalid!\n" +
                     "Try again.\n");
+        } catch (NoSuchElementException ne) {
+            System.out.println("This is option is not available for empty lists.\n");
         } catch (IOException e) {
             System.out.println("\nProblem with input stream: " + e.getMessage() +
                     "\nTry again.\n");
         }
+    }
+
+    private void checkForElements() throws NoSuchElementException {
+        if (students.isEmpty())
+            throw new NoSuchElementException();
     }
 
     private int parseStringToIndex(String param) throws NumberFormatException {
@@ -272,7 +283,7 @@ public class ConsoleApplication {
 
     private void doPrintAll() {
         if (students.isEmpty())
-            System.out.println("There are no items to print in the stack.");
+            System.out.println("There are no items to print in the list.\n");
         else {
             System.out.println("\nList-Items:");
             students.printAll();
@@ -282,13 +293,13 @@ public class ConsoleApplication {
     private void doAdd(String params) throws IOException {
         Student student = params != null ? parseStringToStudent(params) : readStudent();
         students.add(student);
-        System.out.println("\nThe following student has been added to the list:\n" + student + "\n");
+        System.out.printf("\nThe following student has been added to the list:%n%s%n%n", student);
     }
 
     private void doGet(String params) throws IOException {
         int index = params != null ? parseStringToIndex(params) : readIndex();
         Student student = students.get(index);
-        System.out.println("\nThe following student has been removed from the list:\n" + student + "\n");
+        System.out.printf("\nThe following item is stored at index %d:%n%s%n%n", index, student);
     }
 
     private void doInsertAt(String params) throws IOException {
@@ -309,7 +320,7 @@ public class ConsoleApplication {
         int index = params != null ? parseStringToIndex(params) : readIndex();
         Student student = students.get(students.size() - 1);
         students.remove(index);
-        System.out.println("\nThe following list has been removed from the list:\n" + student + "\n");
+        System.out.println("\nThe following student has been removed from the list:\n" + student + "\n");
     }
 
     private void doClear() {
@@ -328,7 +339,7 @@ public class ConsoleApplication {
 
     private void doHeapSort(String params) throws IOException, NullPointerException {
         if (students.size() < 2) {
-            System.out.println("The list needs to contain at least 2 items to get sorted.");
+            System.out.println("The list needs to contain at least 2 items to get sorted.\n");
             return;
         }
         String comparatorString = params == null ? readComparatorString("comparison") : params;
@@ -355,7 +366,7 @@ public class ConsoleApplication {
         Listable<Student> res = students.search(searchTerm, comparator);
 
         System.out.print("\n");
-        if (res != null) {
+        if (res.size() > 0) {
             System.out.println("Following items have been found:\n");
             res.printAll();
             System.out.print("\n");

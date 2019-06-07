@@ -77,7 +77,7 @@ public class Student implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return "data.Student{" +
+        return "{" +
                 "surname='" + surname + '\'' +
                 ", prename='" + prename + '\'' +
                 ", matrNr=" + matrNr +
