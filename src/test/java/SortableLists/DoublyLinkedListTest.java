@@ -6,13 +6,10 @@ import SortableLists.lists.Listable;
 import SortableLists.lists.SinglyLinkedList;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 /**
  * @author joschaseelig
  */
-@RunWith(JUnit4.class)
 public class DoublyLinkedListTest {
 
     private Listable<String> createStringList() {
@@ -412,8 +409,8 @@ public class DoublyLinkedListTest {
         Assert.assertEquals(s8, students.get(1));
         Assert.assertEquals(s4, students.get(2));
         Assert.assertEquals(s5, students.get(3));
-        Assert.assertEquals(s6, students.get(4));
-        Assert.assertEquals(s7, students.get(5));
+        Assert.assertEquals(s7, students.get(4));
+        Assert.assertEquals(s6, students.get(5));
         Assert.assertEquals(s3, students.get(6));
         Assert.assertEquals(s9, students.get(7));
         Assert.assertEquals(s2, students.get(8));
@@ -476,9 +473,9 @@ public class DoublyLinkedListTest {
         Assert.assertEquals(s3, students.get(1));
         Assert.assertEquals(s8, students.get(2));
         Assert.assertEquals(s5, students.get(3));
-        Assert.assertEquals(s9, students.get(4));
-        Assert.assertEquals(s2, students.get(5));
-        Assert.assertEquals(s1, students.get(6));
+        Assert.assertEquals(s2, students.get(4));
+        Assert.assertEquals(s1, students.get(5));
+        Assert.assertEquals(s9, students.get(6));
         Assert.assertEquals(s7, students.get(7));
         Assert.assertEquals(s6, students.get(8));
     }
@@ -536,8 +533,8 @@ public class DoublyLinkedListTest {
         Listable<Student> res = students.search(searchTerm, Student.BY_NAME_COMPARATOR);
 
         Assert.assertEquals(2, res.size());
-        Assert.assertEquals(s8, res.get(0));
-        Assert.assertEquals(s1, res.get(1));
+        Assert.assertEquals(s8, res.get(1));
+        Assert.assertEquals(s1, res.get(0));
     }
 
     @Test

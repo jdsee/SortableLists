@@ -64,7 +64,6 @@ public class DoublyLinkedList<T> implements Listable<T> {
                     temp.prev.next = newNode;
                     temp.prev = newNode;
                     newNode.next = temp;
-
                 }
                 temp = temp.next;
             }
