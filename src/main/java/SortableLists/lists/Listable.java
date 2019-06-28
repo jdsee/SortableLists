@@ -4,19 +4,32 @@ import SortableLists.sort.Comparator;
 
 /**
  * Implementing this interface results in a listable data type. Items of any type can be stored in there.
+ * The items are linked one after another.
+ * In comparison to an array, in a linked list its easier to replace and remove stored items.
+ * Also the linked list is dynamic, so its trouble-free to add more items at any time.
+ * The greatest disadvantage in contrast to the array is that the items can't be addressed directly.
+ * So all the stored items need to be iterated to find a specific one.
  *
- * @param <T>
+ * @param <T> datatype of the items to be stored in the list.
  * @author joschaseelig
  */
 public interface Listable<T> {
 
     /**
-     * Appends the specified item of this list.
+     * Appends the specified item to this list.
      *
      * @param data element to be appended in this list.
      * @throws NullPointerException if the specified item is null.
      */
     void add(T data) throws NullPointerException;
+
+    /**
+     * Appends the specified item at the first index of this list.
+     *
+     * @param data element to be appended in this list.
+     * @throws NullPointerException if the specified item is null.
+     */
+    void addFirst(T data) throws NullPointerException;
 
     /**
      * Adding the specified item at the specified index in this list.
@@ -68,14 +81,14 @@ public interface Listable<T> {
     boolean isEmpty();
 
     /**
-     * Sorts the elements in this list by applying heapsort.
+     * Sorts the elements in this list by applying sort.
      * The sorted list will have the element with the lowest value at the first, and the one with the highest value
      * at the last index.
      *
      * @param comparator
      * @throws NullPointerException if one or more elements in this list is null.
      */
-    void heapsort(Comparator<T> comparator) throws NullPointerException;
+    void sort(Comparator<T> comparator) throws NullPointerException;
 
     /**
      * Searches one or more Students by comparing with the specified comparator.

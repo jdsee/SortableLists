@@ -73,6 +73,17 @@ public class DoublyLinkedListTest {
         Assert.assertEquals(s2, list.get(1));
     }
 
+    @Test
+    public void insertAtAndGet_GoodCase03() {
+        Listable<String> list = this.createStringList();
+
+        String s1;
+        s1 = "s1";
+        list.insertAt(0, s1);
+
+        Assert.assertEquals(s1, list.get(0));
+    }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void insertAt_BadCase02() {
         Listable<String> list = this.createStringList();
@@ -327,7 +338,7 @@ public class DoublyLinkedListTest {
         students.add(s8);
         students.add(s9);
 
-        students.heapsort(Student.BY_MATR_NR_COMPARATOR);
+        students.sort(Student.BY_MATR_NR_COMPARATOR);
 
         Assert.assertEquals(s9, students.get(0));
         Assert.assertEquals(s8, students.get(1));
@@ -364,7 +375,7 @@ public class DoublyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_MATR_NR_COMPARATOR);
+        students.sort(Student.BY_MATR_NR_COMPARATOR);
 
         Assert.assertEquals(s9, students.get(0));
         Assert.assertEquals(s8, students.get(1));
@@ -401,10 +412,10 @@ public class DoublyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_NAME_COMPARATOR);
+        students.sort(Student.BY_SURNAME_COMPARATOR);
 
-        Assert.assertEquals(s1, students.get(0));
-        Assert.assertEquals(s8, students.get(1));
+        Assert.assertEquals(s8, students.get(0));
+        Assert.assertEquals(s1, students.get(1));
         Assert.assertEquals(s4, students.get(2));
         Assert.assertEquals(s5, students.get(3));
         Assert.assertEquals(s7, students.get(4));
@@ -438,7 +449,7 @@ public class DoublyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_NAME_COMPARATOR);
+        students.sort(Student.BY_SURNAME_COMPARATOR);
     }
 
     @Test
@@ -465,12 +476,12 @@ public class DoublyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_COURSE_COMPARATOR);
+        students.sort(Student.BY_COURSE_COMPARATOR);
 
         Assert.assertEquals(s4, students.get(0));
         Assert.assertEquals(s3, students.get(1));
-        Assert.assertEquals(s8, students.get(2));
-        Assert.assertEquals(s5, students.get(3));
+        Assert.assertEquals(s5, students.get(2));
+        Assert.assertEquals(s8, students.get(3));
         Assert.assertEquals(s2, students.get(4));
         Assert.assertEquals(s1, students.get(5));
         Assert.assertEquals(s9, students.get(6));
@@ -523,16 +534,16 @@ public class DoublyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_NAME_COMPARATOR);
+        students.sort(Student.BY_SURNAME_COMPARATOR);
 
         String searchTermString = "aa";
         Student searchTerm = Student.createEmptyStudent();
         searchTerm.setSurname(searchTermString);
-        Listable<Student> res = students.search(searchTerm, Student.BY_NAME_COMPARATOR);
+        Listable<Student> res = students.search(searchTerm, Student.BY_SURNAME_COMPARATOR);
 
         Assert.assertEquals(2, res.size());
-        Assert.assertEquals(s8, res.get(1));
-        Assert.assertEquals(s1, res.get(0));
+        Assert.assertEquals(s1, res.get(1));
+        Assert.assertEquals(s8, res.get(0));
     }
 
     @Test
@@ -546,7 +557,7 @@ public class DoublyLinkedListTest {
         String searchTermString = "aa";
         Student searchTerm = Student.createEmptyStudent();
         searchTerm.setSurname(searchTermString);
-        Listable<Student> res = students.search(searchTerm, Student.BY_NAME_COMPARATOR);
+        Listable<Student> res = students.search(searchTerm, Student.BY_SURNAME_COMPARATOR);
 
         Assert.assertEquals(s1, res.get(0));
     }
@@ -564,7 +575,7 @@ public class DoublyLinkedListTest {
         String searchTermString = "aa";
         Student searchTerm = Student.createEmptyStudent();
         searchTerm.setSurname(searchTermString);
-        Listable<Student> res = students.search(searchTerm, Student.BY_NAME_COMPARATOR);
+        Listable<Student> res = students.search(searchTerm, Student.BY_SURNAME_COMPARATOR);
 
         Assert.assertEquals(s1, res.get(0));
     }

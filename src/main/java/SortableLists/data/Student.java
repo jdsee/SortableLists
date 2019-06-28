@@ -7,7 +7,7 @@ import SortableLists.sort.Comparator;
  */
 public class Student implements Comparable<Student> {
 
-    public static final Comparator<Student> BY_NAME_COMPARATOR = new Comparator<Student>() {
+    public static final Comparator<Student> BY_SURNAME_COMPARATOR = new Comparator<Student>() {
         @Override
         public int compare(Student o1, Student o2) {
             if (o1.getSurname() == null && o2.getSurname() == null)
@@ -16,7 +16,7 @@ public class Student implements Comparable<Student> {
                 return 1;
             if (o2.getSurname() == null)
                 return -1;
-            return o1.getSurname().compareTo(o2.getSurname());
+            return o1.surname.compareTo(o2.surname);
         }
     };
     public static final Comparator<Student> BY_PRENAME_COMPARATOR = new Comparator<Student>() {
@@ -28,19 +28,20 @@ public class Student implements Comparable<Student> {
                 return 1;
             if (o2.getPrename() == null)
                 return -1;
-            return o1.getPrename().compareTo(o2.getPrename());
+            return o1.prename.compareTo(o2.prename);
         }
     };
     public static final Comparator<Student> BY_MATR_NR_COMPARATOR = new Comparator<Student>() {
         @Override
         public int compare(Student o1, Student o2) {
-            return o1.getMatrNr() - o2.getMatrNr();
+            //return o1.getMatrNr() - o2.getMatrNr();
+            return o1.matrNr - o2.matrNr;
         }
     };
     public static final Comparator<Student> BY_COURSE_COMPARATOR = new Comparator<Student>() {
         @Override
         public int compare(Student o1, Student o2) {
-            return o1.getCourse() - o2.getCourse();
+            return o1.course - o2.course;
         }
     };
 

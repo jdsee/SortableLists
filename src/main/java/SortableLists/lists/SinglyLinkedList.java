@@ -2,6 +2,7 @@ package SortableLists.lists;
 
 import SortableLists.sort.Comparator;
 import SortableLists.sort.HeapSort;
+import SortableLists.sort.SelectionSort;
 
 /**
  * @author joschaseelig
@@ -36,6 +37,11 @@ public class SinglyLinkedList<T> implements Listable<T> {
     }
 
     @Override
+    public void addFirst(T data) throws NullPointerException {
+        this.insertAt(0, data);
+    }
+
+    @Override
     public T insertAt(int index, T data) throws IndexOutOfBoundsException, NullPointerException {
         if (data == null) {
             throw new NullPointerException();
@@ -43,6 +49,9 @@ public class SinglyLinkedList<T> implements Listable<T> {
         checkPositionIndex(index);
         Node newNode = new Node();
         newNode.data = data;
+        if (head == null) {
+            head = newNode;
+        }
         if (index == 0) {
             newNode.next = head;
             head = newNode;
@@ -128,8 +137,8 @@ public class SinglyLinkedList<T> implements Listable<T> {
     }
 
     @Override
-    public void heapsort(Comparator<T> comparator) throws NullPointerException {
-        new HeapSort<T>().sort(this, comparator);
+    public void sort(Comparator<T> comparator) throws NullPointerException {
+        new SelectionSort<T>().sort(this, comparator);
     }
 
     @Override

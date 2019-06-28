@@ -3,7 +3,8 @@ package SortableLists;
 import SortableLists.data.Student;
 import SortableLists.lists.DoublyLinkedList;
 import SortableLists.lists.Listable;
-import SortableLists.sort.Comparator;
+import SortableLists.lists.SinglyLinkedList;
+import SortableLists.sort.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,27 +18,38 @@ import java.util.NoSuchElementException;
 public class ConsoleApplication {
 
     private final BufferedReader in;
-    private final Listable<Student> students;
+    private Listable<Student> students;
 
     public ConsoleApplication(InputStream is) {
         this.in = new BufferedReader(new InputStreamReader(is));
-        this.students = new DoublyLinkedList<>();
     }
 
     private static final String ADD_STRING = "add";
-    private static final String GET_STRING = "get";
+    private static final String ADD_NR = "1";
     private static final String INSERT_AT_STRING = "insert";
+    private static final String INSERT_AT_NR = "2";
+    private static final String GET_STRING = "get";
+    private static final String GET_NR = "3";
     private static final String REMOVE_STRING = "remove";
+    private static final String REMOVE_NR = "4";
     private static final String CLEAR_STRING = "clear";
+    private static final String CLEAR_NR = "5";
     private static final String SIZE_STRING = "size";
+    private static final String SIZE_NR = "6";
     private static final String IS_EMPTY_STRING = "empty";
-    private static final String HEAPSORT_STRING = "sort";
+    private static final String IS_EMPTY_NR = "7";
+    private static final String SORT_STRING = "sort";
+    private static final String SORT_NR = "8";
     private static final String SEARCH_STRING = "search";
+    private static final String SEARCH_NR = "9";
     private static final String PRINT_ALL_STRING = "print";
+    private static final String PRINT_ALL_NR = "10";
     private static final String PRINT_TASKS_STRING = "tasks";
+    private static final String PRINT_TASKS_NR = "11";
     private static final String EXIT_STRING = "exit";
+    private static final String EXIT_NR = "0";
 
-    private static final String NAME_CRIT_STRING = "name";
+    private static final String SURNAME_CRIT_STRING = "surname";
     private static final String PRENAME_CRIT_STRING = "prename";
     private static final String MATR_NR_CRIT_STRING = "matrNr";
     private static final String COURSE_CRIT_STRING = "course";
@@ -48,37 +60,65 @@ public class ConsoleApplication {
 
     public void startUserDialogue() {
         printHeader();
-        System.out.println(
-                "\n" +
-                        "Welcome!\n\n" +
-                        "This application is a representation of the datatype Linked-List.\n" +
-                        "As example, there will be used a student data type that can be saved in the students.\n" +
-                        "\n-> students can be added directly by typing the data behind the command in the following order:\n" +
-                        "[command] [index if necessary] [name] [surname] [matriculation-number] [course]\n");
+        System.out.println("\n" +
+                "Welcome!\n\n" +
+                "This application is a representation of the datatype Linked-List.\n" +
+                "As example, there will be used a student data type that can be stored in the list.\n"
+        );
 
-        printTasks();
+        int decision = this.readListType();
+        this.students = decision == 1 ? new SinglyLinkedList<>() : new DoublyLinkedList<>();
+
         while (true) {
+            this.printTasks();
             String command = readCommand();
             utilizeCommand(command);
         }
+    }
+
+    private int readListType() {
+        int repeat = 3;
+        while (repeat > 0) {
+            try {
+                System.out.println("What kind of list do you want to use?\n" +
+                        "1: Singly-Linked-List\n" +
+                        "2: Doubly-Linked-List\n");
+                System.out.print("-> ");
+                String userInput = this.in.readLine().trim();
+                int decision = Integer.parseInt(userInput);
+                if (decision == 1 || decision == 2) {
+                    return decision;
+                }
+                repeat--;
+            } catch (IOException e) {
+                System.out.println("\nProblem with input stream: " + e.getMessage());
+                System.out.println("Try again.\n");
+            } catch (NumberFormatException nfe) {
+                System.out.println(repeat == 1 ? "To many input faults. Doubly-Linked-List is chosen automatically." : "Wrong input. Pleas try again.\n");
+            } finally {
+                repeat--;
+            }
+        }
+        return 2;
     }
 
     private void printTasks() {
         System.out.println("\n" +
                 "TASKS:\n" +
                 "----\n" +
-                ADD_STRING + "        -> Creates a new student and adds it to the list.\n" +
-                INSERT_AT_STRING + "     -> Creates a new student and adds it to the list at the specified coordinates.\n" +
-                GET_STRING + "        -> Prints the item at the specified index.\n" +
-                REMOVE_STRING + "     -> Removes the item at the specified index.\n" +
-                SIZE_STRING + "       -> Prints the actual amount of items in the list.\n" +
-                IS_EMPTY_STRING + "      -> Prints 'yes' if the stack is empty - 'no' otherwise.\n" +
-                HEAPSORT_STRING + "       -> Sorts the list and prints all items in the new order.\n" +
-                SEARCH_STRING + "     -> Searches for students matching the search term and prints the findings.\n" +
-                PRINT_ALL_STRING + "      -> Prints all items of the list.\n" +
+                ADD_NR + " : " + ADD_STRING + "        -> Creates a new student and adds it to the list.\n" +
+                INSERT_AT_NR + " : " + INSERT_AT_STRING + "     -> Creates a new student and adds it to the list at the specified coordinates.\n" +
+                GET_NR + " : " + GET_STRING + "        -> Prints the item at the specified index.\n" +
+                REMOVE_NR + " : " + REMOVE_STRING + "     -> Removes the item at the specified index.\n" +
+                CLEAR_NR + " : " + CLEAR_STRING + "      -> Removes all items stored in the list.\n" +
+                SIZE_NR + " : " + SIZE_STRING + "       -> Prints the actual amount of items in the list.\n" +
+                IS_EMPTY_NR + " : " + IS_EMPTY_STRING + "      -> Prints 'yes' if the stack is empty - 'no' otherwise.\n" +
+                SORT_NR + " : " + SORT_STRING + "       -> Sorts the list and prints all items in the new order.\n" +
+                SEARCH_NR + " : " + SEARCH_STRING + "     -> Searches for students matching the search term and prints the findings.\n" +
+                PRINT_ALL_NR + ": " + PRINT_ALL_STRING + "      -> Prints all items of the list.\n" +
                 "\n" +
-                PRINT_TASKS_STRING + "      -> Prints possible tasks.\n" +
-                EXIT_STRING + "       -> Exits the application.\n" +
+                PRINT_TASKS_NR + ": " + PRINT_TASKS_STRING + "      -> Prints possible tasks.\n" +
+                EXIT_NR + " : " + EXIT_STRING + "       -> Exits the application.\n" +
                 "----\n");
     }
 
@@ -107,59 +147,72 @@ public class ConsoleApplication {
 
         try {
             switch (command) {
+                case ADD_NR:
                 case ADD_STRING:
                     doAdd(params);
                     break;
+                case GET_NR:
                 case GET_STRING:
                     checkForElements();
                     doGet(params);
                     break;
+                case INSERT_AT_NR:
                 case INSERT_AT_STRING:
                     doInsertAt(params);
                     break;
+                case REMOVE_NR:
                 case REMOVE_STRING:
                     checkForElements();
                     doRemove(params);
                     break;
+                case CLEAR_NR:
                 case CLEAR_STRING:
                     doClear();
                     break;
+                case SIZE_NR:
                 case SIZE_STRING:
                     doSize();
                     break;
+                case IS_EMPTY_NR:
                 case IS_EMPTY_STRING:
                     doIsEmpty();
                     break;
+                case PRINT_ALL_NR:
                 case PRINT_ALL_STRING:
                     doPrintAll();
                     break;
-                case HEAPSORT_STRING:
+                case SORT_NR:
+                case SORT_STRING:
                     checkForElements();
-                    doHeapSort(params);
+                    doSort(params);
                     break;
+                case SEARCH_NR:
                 case SEARCH_STRING:
                     checkForElements();
                     doSearch(params);
                     break;
                 case "-h":
                 case "--help":
+                case PRINT_TASKS_NR:
                 case PRINT_TASKS_STRING:
                     printTasks();
                     break;
                 case "-q":
+                case EXIT_NR:
                 case EXIT_STRING:
+
                     System.exit(0);
                 default:
-                    System.out.println("\nInvalid command! Please use the syntax from the tasks-list [-h || --help]. \n");
+                    System.out.println("\nInvalid command! Please use the syntax from the tasks-list [-h, --help]. \n");
                     break;
             }
         } catch (NumberFormatException e) {
             System.out.println("\nInvalid command! Please use the syntax from the tasks-list.\n");
-        } catch (NullPointerException | IndexOutOfBoundsException iob) {
+        } catch (NullPointerException | IndexOutOfBoundsException | IllegalArgumentException iob) {
             System.out.println("\nThe specified arguments are invalid!\n" +
                     "Try again.\n");
         } catch (NoSuchElementException ne) {
-            System.out.println("This is option is not available for empty lists.\n");
+            System.out.println("\nThis option is not available for empty lists.\n");
         } catch (IOException e) {
             System.out.println("\nProblem with input stream: " + e.getMessage() +
                     "\nTry again.\n");
@@ -218,7 +271,7 @@ public class ConsoleApplication {
     }
 
     private String readName() throws IOException {
-        System.out.print("Name: ");
+        System.out.print("Surname: ");
         return in.readLine().trim();
     }
 
@@ -288,6 +341,7 @@ public class ConsoleApplication {
         else {
             System.out.println("\nList-Items:");
             students.printAll();
+            System.out.print("\n");
         }
     }
 
@@ -338,17 +392,45 @@ public class ConsoleApplication {
         System.out.println("\nThe students is " + answer + "\n");
     }
 
-    private void doHeapSort(String params) throws IOException, NullPointerException {
+    private void doSort(String params) throws IOException, NullPointerException {
         if (students.size() < 2) {
             System.out.println("The list needs to contain at least 2 items to get sorted.\n");
             return;
         }
+
+        Sortable<Student> sortingMethod = readSortMethod();
+
         String comparatorString = params == null ? readComparatorString("comparison") : params;
         Comparator<Student> comparator = parseStringToComparator(comparatorString, true);
 
-        students.heapsort(comparator);
+        sortingMethod.sort(students, comparator);
+
         System.out.println("\nThe list has been sorted. The list has the following order now:\n");
         students.printAll();
+        System.out.print("\n");
+    }
+
+    private Sortable<Student> readSortMethod() throws IOException {
+        System.out.println("Please choose the sorting method you want to use:\n" +
+                "1 : Bubble-Sort\n" +
+                "2 : Selection-Sort\n" +
+                "3 : Heap-Sort\n");
+        System.out.print("-> ");
+
+        String decision = this.in.readLine();
+        switch (decision) {
+            case "1":
+            case "bubble":
+                return new BubbleSort<>();
+            case "2":
+            case "selection":
+                return new SelectionSort<>();
+            case "3":
+            case "heap":
+                return new HeapSort<>();
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     private void doSearch(String params) throws IOException {
@@ -363,12 +445,12 @@ public class ConsoleApplication {
         Comparator<Student> comparator = parseStringToComparator(comparatorString, false);
         Student searchTerm = parseStringToSearchTerm(comparatorString, searchTermString);
 
-        students.heapsort(comparator);
+        students.sort(comparator);
         Listable<Student> res = students.search(searchTerm, comparator);
 
         System.out.print("\n");
         if (res.size() > 0) {
-            System.out.println("Following items have been found:\n");
+            System.out.println("Following items have been found:");
             res.printAll();
             System.out.print("\n");
         } else {
@@ -377,7 +459,11 @@ public class ConsoleApplication {
     }
 
     private String readComparatorString(String usage) throws IOException {
-        System.out.printf("%nSpecify the %s criterion. [name || prename || matriculationNr || course]%n", usage);
+        System.out.printf("%nSpecify the %s criterion:%n", usage);
+        System.out.println("1 : Surname\n" +
+                "2 : Prename\n" +
+                "3 : Matriculation-Number\n" +
+                "4 : Course\n");
         System.out.print("-> ");
         String userInput = in.readLine();
 
@@ -387,15 +473,19 @@ public class ConsoleApplication {
     private Comparator<Student> parseStringToComparator(String params, Boolean toSort)
             throws NullPointerException, IllegalArgumentException {
         switch (params) {
-            case "n":
-            case NAME_CRIT_STRING:
-                return Student.BY_NAME_COMPARATOR;
+            case "1":
+            case "s":
+            case SURNAME_CRIT_STRING:
+                return Student.BY_SURNAME_COMPARATOR;
+            case "2":
             case "p":
             case PRENAME_CRIT_STRING:
                 return Student.BY_PRENAME_COMPARATOR;
+            case "3":
             case "m":
             case MATR_NR_CRIT_STRING:
                 return Student.BY_MATR_NR_COMPARATOR;
+            case "4":
             case "c":
             case COURSE_CRIT_STRING:
                 return Student.BY_COURSE_COMPARATOR;
@@ -408,8 +498,8 @@ public class ConsoleApplication {
             throws IOException, IllegalArgumentException {
         Student res = Student.createEmptyStudent();
         switch (comparatorString) {
-            case "n":
-            case NAME_CRIT_STRING:
+            case "s":
+            case SURNAME_CRIT_STRING:
                 res.setSurname(searchTermString != null ? searchTermString : readName());
                 break;
             case "p":

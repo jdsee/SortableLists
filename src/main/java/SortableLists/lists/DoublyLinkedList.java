@@ -2,13 +2,14 @@ package SortableLists.lists;
 
 import SortableLists.sort.Comparator;
 import SortableLists.sort.HeapSort;
+import SortableLists.sort.SelectionSort;
 
 /**
  * @author joschaseelig
  */
 public class DoublyLinkedList<T> implements Listable<T> {
 
-    private Node head;
+    private transient Node head;
     private Node tail;
     private int n = 0;
 
@@ -40,6 +41,11 @@ public class DoublyLinkedList<T> implements Listable<T> {
     }
 
     @Override
+    public void addFirst(T data) throws NullPointerException {
+        this.insertAt(0, data);
+    }
+
+    @Override
     public T insertAt(int index, T data) throws IndexOutOfBoundsException, NullPointerException {
         if (data == null) {
             throw new NullPointerException();
@@ -49,6 +55,9 @@ public class DoublyLinkedList<T> implements Listable<T> {
         Node newNode = new Node();
         newNode.data = data;
         Node temp = head;
+        if (head == null) {
+            head = newNode;
+        }
         if (index == 0) {
             head.prev = newNode;
             newNode.next = head;
@@ -182,8 +191,8 @@ public class DoublyLinkedList<T> implements Listable<T> {
     }
 
     @Override
-    public void heapsort(Comparator<T> comparator) throws NullPointerException {
-        new HeapSort<T>().sort(this, comparator);
+    public void sort(Comparator<T> comparator) throws NullPointerException {
+        new SelectionSort<T>().sort(this, comparator);
     }
 
     @Override

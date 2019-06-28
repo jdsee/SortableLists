@@ -1,11 +1,12 @@
 plugins {
-     id 'java'
-     id 'application'
-     id 'eclipse'
-     id 'idea'
-//   id 'checkstyle'
-//   id 'pmd'
-//   id 'findbugs'
+    id 'application'
+    id 'eclipse'
+    id 'idea'
+    id 'jacoco'
+    id 'java'
+//    id 'checkstyle'
+//    id 'pmd'
+//    id 'findbugs'
 }
 
 repositories {

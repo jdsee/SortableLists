@@ -1,5 +1,3 @@
-package view;
-
 import SortableLists.ConsoleApplication;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,6 +15,7 @@ public class ConsoleApplicationTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
 
+        dos.writeUTF("2\n");
         dos.writeUTF("add lustig peter 123 1\n");
         dos.writeUTF("add pan peter 321 1\n");
         dos.writeUTF("add Zwegat Peter 456 2\n");
@@ -29,6 +28,7 @@ public class ConsoleApplicationTest {
         DataInputStream dis = new DataInputStream(bais);
 
         new ConsoleApplication(dis).startUserDialogue();
+        Assert.assertTrue(true);
     }
 
     @Test
@@ -37,6 +37,7 @@ public class ConsoleApplicationTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
 
+        dos.writeUTF("2\n");
         dos.writeUTF("add lustig peter 123 1\n");
         dos.writeUTF("add pan peter 321 1\n");
         dos.writeUTF("add Zwegat Peter 456 2\n");
@@ -47,7 +48,7 @@ public class ConsoleApplicationTest {
         dos.writeUTF("add uri geller 1345 234\n");
         dos.writeUTF("add bohlen dieter 9403 3\n");
         dos.writeUTF("search\n");
-        dos.writeUTF("n\n");
+        dos.writeUTF("s\n");
         dos.writeUTF("bohlen");
         dos.writeUTF("search m 234\n");
         dos.writeUTF("search c 3\n");
@@ -57,5 +58,6 @@ public class ConsoleApplicationTest {
         DataInputStream dis = new DataInputStream(bais);
 
         new ConsoleApplication(dis).startUserDialogue();
+        Assert.assertTrue(true);
     }
 }

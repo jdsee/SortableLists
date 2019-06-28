@@ -72,6 +72,17 @@ public class SinglyLinkedListTest {
         Assert.assertEquals(s2, list.get(1));
     }
 
+    @Test
+    public void insertAtAndGet_GoodCase03() {
+        Listable<String> list = this.createStringList();
+
+        String s1;
+        s1 = "s1";
+        list.insertAt(0, s1);
+
+        Assert.assertEquals(s1, list.get(0));
+    }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void insertAt_BadCase02() {
         Listable<String> list = this.createStringList();
@@ -117,12 +128,18 @@ public class SinglyLinkedListTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void get_BadCase01() throws IndexOutOfBoundsException {
         Listable<String> list = this.createStringList();
+
+        String string = "String";
+
         list.get(1);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void get_BadCase02() throws IndexOutOfBoundsException {
         Listable<String> list = this.createStringList();
+
+        String string = "String";
+
         list.get(-1);
     }
 
@@ -173,16 +190,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void clear_GoodCase02() {
-        Listable<String> list = this.createStringList();
-
-        list.clear();
-
-        Assert.assertTrue(list.isEmpty());
-    }
-
-    @Test
-    public void swap_GoodCase01() {
+    public void exchange_GoodCase01() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -199,7 +207,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_GoodCase02() {
+    public void exchange_GoodCase02() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -216,7 +224,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BorderCase01() {
+    public void exchange_BorderCase01() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -233,7 +241,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BorderCase02() {
+    public void exchange_BorderCase02() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -250,7 +258,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void swap_BadCase01() {
+    public void exchange_BadCase01() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -264,7 +272,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BadCase02() {
+    public void exchange_BadCase02() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -280,7 +288,7 @@ public class SinglyLinkedListTest {
     }
 
     @Test
-    public void swap_BadCase03() {
+    public void exchange_BadCase03() {
         Listable<String> list = this.createStringList();
 
         list.add("s0");
@@ -294,6 +302,15 @@ public class SinglyLinkedListTest {
 
         Assert.assertNotEquals(list.get(1), "s1");
         Assert.assertNotEquals(list.get(4), "s4");
+    }
+
+    @Test
+    public void clear_GoodCase02() {
+        Listable<String> list = this.createStringList();
+
+        list.clear();
+
+        Assert.assertTrue(list.isEmpty());
     }
 
     @Test
@@ -320,7 +337,7 @@ public class SinglyLinkedListTest {
         students.add(s8);
         students.add(s9);
 
-        students.heapsort(Student.BY_MATR_NR_COMPARATOR);
+        students.sort(Student.BY_MATR_NR_COMPARATOR);
 
         Assert.assertEquals(s9, students.get(0));
         Assert.assertEquals(s8, students.get(1));
@@ -357,7 +374,7 @@ public class SinglyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_MATR_NR_COMPARATOR);
+        students.sort(Student.BY_MATR_NR_COMPARATOR);
 
         Assert.assertEquals(s9, students.get(0));
         Assert.assertEquals(s8, students.get(1));
@@ -394,10 +411,10 @@ public class SinglyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_NAME_COMPARATOR);
+        students.sort(Student.BY_SURNAME_COMPARATOR);
 
-        Assert.assertEquals(s1, students.get(0));
-        Assert.assertEquals(s8, students.get(1));
+        Assert.assertEquals(s8, students.get(0));
+        Assert.assertEquals(s1, students.get(1));
         Assert.assertEquals(s4, students.get(2));
         Assert.assertEquals(s5, students.get(3));
         Assert.assertEquals(s7, students.get(4));
@@ -431,7 +448,7 @@ public class SinglyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_NAME_COMPARATOR);
+        students.sort(Student.BY_SURNAME_COMPARATOR);
     }
 
     @Test
@@ -458,12 +475,12 @@ public class SinglyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_COURSE_COMPARATOR);
+        students.sort(Student.BY_COURSE_COMPARATOR);
 
         Assert.assertEquals(s4, students.get(0));
         Assert.assertEquals(s3, students.get(1));
-        Assert.assertEquals(s8, students.get(2));
-        Assert.assertEquals(s5, students.get(3));
+        Assert.assertEquals(s5, students.get(2));
+        Assert.assertEquals(s8, students.get(3));
         Assert.assertEquals(s2, students.get(4));
         Assert.assertEquals(s1, students.get(5));
         Assert.assertEquals(s9, students.get(6));
@@ -516,16 +533,16 @@ public class SinglyLinkedListTest {
         students.add(s4);
         students.add(s6);
 
-        students.heapsort(Student.BY_NAME_COMPARATOR);
+        students.sort(Student.BY_SURNAME_COMPARATOR);
 
         String searchTermString = "aa";
         Student searchTerm = Student.createEmptyStudent();
         searchTerm.setSurname(searchTermString);
-        Listable<Student> res = students.search(searchTerm, Student.BY_NAME_COMPARATOR);
+        Listable<Student> res = students.search(searchTerm, Student.BY_SURNAME_COMPARATOR);
 
         Assert.assertEquals(2, res.size());
-        Assert.assertEquals(s8, res.get(1));
-        Assert.assertEquals(s1, res.get(0));
+        Assert.assertEquals(s1, res.get(1));
+        Assert.assertEquals(s8, res.get(0));
     }
 
     @Test
@@ -539,7 +556,7 @@ public class SinglyLinkedListTest {
         String searchTermString = "aa";
         Student searchTerm = Student.createEmptyStudent();
         searchTerm.setSurname(searchTermString);
-        Listable<Student> res = students.search(searchTerm, Student.BY_NAME_COMPARATOR);
+        Listable<Student> res = students.search(searchTerm, Student.BY_SURNAME_COMPARATOR);
 
         Assert.assertEquals(s1, res.get(0));
     }
@@ -557,7 +574,7 @@ public class SinglyLinkedListTest {
         String searchTermString = "aa";
         Student searchTerm = Student.createEmptyStudent();
         searchTerm.setSurname(searchTermString);
-        Listable<Student> res = students.search(searchTerm, Student.BY_NAME_COMPARATOR);
+        Listable<Student> res = students.search(searchTerm, Student.BY_SURNAME_COMPARATOR);
 
         Assert.assertEquals(s1, res.get(0));
     }
