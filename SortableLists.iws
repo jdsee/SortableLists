@@ -3,31 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fc01adbc-1c99-45ac-959f-d367c23f7150" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SortableLists.iws" beforeDir="false" afterPath="$PROJECT_DIR$/SortableLists.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/SortableLists.main.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/ConsoleApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/ConsoleApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/data/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/DoublyLinkedList$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/DoublyLinkedList$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/DoublyLinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/DoublyLinkedList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/Listable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/Listable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/SinglyLinkedList$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/SinglyLinkedList$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/SinglyLinkedList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/lists/SinglyLinkedList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/SortableLists/sort/SelectionSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/SortableLists/sort/SelectionSort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/ConsoleApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/ConsoleApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/data/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/data/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/lists/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/lists/DoublyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/lists/Listable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/lists/Listable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/lists/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/lists/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/sort/Comparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/sort/Comparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SortableLists/sort/SelectionSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SortableLists/sort/SelectionSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DoublyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DoublyLinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SinglyLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SinglyLinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/view/ConsoleApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ConsoleApplicationTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -605,7 +580,7 @@
       <workItem from="1561732125325" duration="54000" />
       <workItem from="1561735060716" duration="50000" />
       <workItem from="1561736988336" duration="188000" />
-      <workItem from="1561739147790" duration="3242000" />
+      <workItem from="1561739147790" duration="3415000" />
     </task>
     <servers />
   </component>
@@ -642,7 +617,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37286000" />
+    <option name="totallyTimeSpent" value="37459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
